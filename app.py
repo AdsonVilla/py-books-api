@@ -41,5 +41,14 @@ def edit_book_by_id(id):
         if book.get('id') == id:
             books[indice].update(edited_book)
             return jsonify(books[indice])
+        
+
+# criar
+@app.route('/books', methods=['POST'])
+def create_book():
+    new_book = request.get_json()
+    books.append(new_book)
+    
+    return jsonify(books)
 # excluir
 app.run(port=5000, host='localhost', debug=True)
